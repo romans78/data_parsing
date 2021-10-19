@@ -56,4 +56,4 @@ for item in items:
         db['yandex_news'].insert_one(entry_dic)
 
     except dke:
-        print(f"Попытка ввода уже существующей записи с id {article_link.split('=')[-1]}")
+        print(f"Попытка ввода уже существующей записи с id {article_id}")
