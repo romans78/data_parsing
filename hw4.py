@@ -30,18 +30,6 @@ db = client['yandex_news']
 news = db.news
 
 
-def add_to_mongoDB(db, collection, entry):
-    entry_dic = {'_id': entry[2].split('=')[-1], 'vacancy_name': entry[0], 'min_salary': entry[1][0],
-                 'max_salary': entry[1][1],
-                 'currency': entry[1][2], 'link': entry[2]}
-    try:
-        db[collection].insert_one(entry_dic)
-        return 0
-    except dke:
-        print(f"Попытка ввода уже существующей записи с id {entry[2].split('/')[-1]}")
-        return 1
-
-
 for item in items:
     article_name = item.xpath(".//h2[contains(@class,'mg-card__title')]/text()")[0].replace('\xa0', ' ')
     article_link = item.xpath(".//a[contains(@class,'mg-card__source-link')]/@href")[0]
